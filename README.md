@@ -23,7 +23,7 @@ Suppose baseline and activity as recording conditions across both experimental a
  * _.../clean/activity/control_
 
 - **Step 2**: Running _EEG_Filtering.m_
-After that, the raw data are loaded into the _EEG_filtering.m_ function. The resulting filtered files are then saved in their corresponding folder. The filtering process is described below:
+Raw data are loaded into the _EEG_filtering.m_ function. The resulting filtered files are then saved in their corresponding folder. The filtering process is described below:
 
 - **EEG_Filtering.m**:
   * Load raw files [.gdf format] 
@@ -36,28 +36,23 @@ After that, the raw data are loaded into the _EEG_filtering.m_ function. The res
      - _path_raw_: path from folder/nested folders where raw data is imported. For nested folders, _path_raw_ must be a [CELL] containing all folder paths. Each path must be [CHAR]. Otherwise, use _path_raw_ = "your path" as [STRING]
      - _path_filtered_: path from folder/nested folders where filtered data will be exported. For nested folders, _path_filtered_ must be a [CELL] containing all folder paths. Each path must be [CHAR]. Otherwise, use _path_filtered_ = "your path" as [STRING]
 
+- **Step 3**: Manual inspection must be performed after running the `EEG_Filtering.m` function. During this process, transient artifacts should be identified and manually rejected, and corrupted channels should be identified for subsequent removal or interpolation. Use _channel_interpolation.xlsx_ file to report corrupted channels in each EEG file.
 
+- **Step 4**: Running _Preprocessing_EEG.m_
+Filtered data are loaded into the  _Preprocessing_EEG.m_ function. The resulting clean files are then saved in their corresponding folder. The remainder of the preprocessing pipeline is described below:
 
-**Preprocessing_EEG.m**: applies the remainder of the preprocessing pipeline.
- 1) Remove Channel Drift by ASR 
- 2) Identifying Bad Channels to Ignore them in ICA
- 3)  ICA Weights
- 4)  ICLabel
- 5)  Channel Rejection/Interpolation
- 6)  Common Average Reference
- 7)  Saving CLEAN .Set File
- 8)  Saving Percentages of Brain and Artifacts Activities
+**Preprocessing_EEG.m**:
+ 1) Remove Channel Drift by ASR [0.25-0.75 Hz]
+ 2) Identifying Bad Channels to Ignore them in ICA (identify the corrupt channels in  _channel_interpolation.xlsx_ file)
+ 3) ICA Weights
+ 4) ICLabel
+ 5) Saving Percentages of Brain and Artifacts **before** IC Rejection
+ 6) Automatic IC rejection
+ 7) Channel Rejection/Interpolation
+ 8) Common Average Reference
+ 9) Saving CLEAN .Set File
+ 10) Saving Percentages of Brain and Artifacts **after** IC Rejection
 
-**The instrucions for using both scripts are described below:**
-
-- **Step 1**: Running _EEG_Filtering.m_
-   - For the function _EEG_Filtering(path_raw, path_filtered)_, configure input data as follows:
-     - _path_raw_: path from folder/nested folders where raw data is imported. For nested folders, _path_raw_ must be a [CELL] containing all folder paths. Each path must be [CHAR]. Otherwise, use _path_raw_ = "your path" as [STRING]
-     - _path_filtered_: path from folder/nested folders where filtered data will be exported. For nested folders, _path_filtered_ must be a [CELL] containing all folder paths. Each path must be [CHAR]. Otherwise, use _path_filtered_ = "your path" as [STRING]
-
-- **Step 2**: Manual inspection must be performed prior to running the `EEG_preprocessing.m` function. During this inspection, transient artifacts should be identified and rejected, and corrupted channels should be identified for subsequent removal or interpolation. Use _channel_interpolation.xlsx_ file to report corrupted channels in each EEG file
-
-- **Step 3**: Running _Preprocessing_EEG.m_
   - For the function _[brain_perc,brain_perc_clean]=Preprocessing_EEG(path_filtered, path_clean_all);_
     - **INPUT DATA**
       - _path_filtered_: path from folder/nested folders where filtered data is imported.
