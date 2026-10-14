@@ -43,16 +43,16 @@ Filtered data are loaded into the  _Preprocessing_EEG.m_ function. The resulting
 
     - **Preprocessing_EEG.m**:
         - 1) Loading filtered [.set] files
-        - 1) Remove channel drift by Artifact Subspace Reconstruction [0.25-0.75 Hz]
-        - 2) Specify the corrupted channels to exclude them from the ICA weights calculation
-        - 3) ICA Weights
-        - 4) ICLabel
-        - 5) Saving Percentages of Brain and Artifacts **before** IC Rejection
-        - 6) Automatic IC rejection
-        - 7) Channel Rejection/Interpolation
-        - 8) Common Average Reference
-        - 9) Saving Clean [.set] Files
-        - 10) Saving Percentages of Brain and Artifacts **after** IC Rejection
+        - 2) Remove channel drift by Artifact Subspace Reconstruction [0.25-0.75 Hz]
+        - 3) Specify the corrupted channels to exclude them from the ICA weights calculation
+        - 4) ICA Weights
+        - 5) $\color{red}ICLabel$
+        - 6) Saving Percentages of Brain and Artifacts **before** IC Rejection
+        - 7) Automatic IC rejection
+        - 8) Channel Rejection/Interpolation
+        - 9) Common Average Reference
+        - 10) Saving Clean [.set] Files
+        - 11) Saving Percentages of Brain and Artifacts **after** IC Rejection
 
         - **Input Data:** [brain_perc,brain_perc_clean]=Preprocessing_EEG(**path_filtered, path_clean_all**)
             + _path_filtered_: path to the folder/nested folders where filtered data is imported.
