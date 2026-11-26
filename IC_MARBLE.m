@@ -18,7 +18,7 @@ brain_perc_clean.Var13 = brain_perc_clean.Var10;% Interpolated channels
         %% 1) Loading filtered [.SET] files (once the manual inspection has been completed)
         filename = set_files(i).name;
         EEG = pop_loadset([path '\' filename]);    
-        chan_locs = readlocs('32Ch_gTec.ced');  % loading channel location file
+        chan_locs = readlocs('INSERT CHANNEL LOCATION FILE HERE');  % loading channel location file (.ced format)
         EEG.chanlocs = chan_locs;               % importing channel loc to EEG file
         
         %% 2) Remove Channel Drift by ASR
@@ -28,8 +28,8 @@ brain_perc_clean.Var13 = brain_perc_clean.Var10;% Interpolated channels
             'WindowCriterion','off','BurstRejection','off',...
             'Distance','Euclidian');
         %% 3) Specify the corrupted channels to exclude them from the ICA weights calculation
-        bad_chs_all = readtable('CHS_interpolation.xlsx',...     % Importing TABLE.xlsx and 
-            'Sheet', 'Baseline_S1');                             % SHEET containing corrupted channels
+        bad_chs_all = readtable('INSERT TABLE WITH CORRUPTED CHANNELS HERE',...      % Importing TABLE.xlsx and 
+            'Sheet', 'INSERT SHEET NAME HERE');                                                 % SHEET containing corrupted channels
         bad_chs = table2array(bad_chs_all(:,2:end));    % Transforming table to array
         idx_bad_chs = find(bad_chs(i,:)==1);            % Corrupted channel indexes from the "i"nth subject
     
@@ -195,7 +195,7 @@ brain_perc_clean.Var13 = brain_perc_clean.Var10;% Interpolated channels
 
     %% 11) Saving Percentages of Brain and Artifacts after IC Rejection
     % Before preprocessing
-    brain_perc_route = 'C:\Users\52477\Desktop\UDEM\PEF\EEG';
+    brain_perc_route = 'INSERT YOUR PATH HERE';
     brain_perc.Properties.VariableNames = [EEG.etc.ic_classification.ICLabel.classes,...
         {'Participant Code','Group'}];
     writetable(brain_perc,[brain_perc_route, '\',...
