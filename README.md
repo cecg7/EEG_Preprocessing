@@ -38,10 +38,10 @@ Raw data are loaded into the _EEG_filtering.m_ function. The resulting filtered 
 
 - **Step 3**: Manual inspection must be performed after running the `EEG_Filtering.m` function. During this process, identify and manually reject transient artifacts, and detect corrupted channels for subsequent removal or interpolation. Mark corrupted channels with "1" in the _channel_interpolation.xlsx_ file
 
-- **Step 4**: Running _Preprocessing_EEG.m_
-Filtered data are loaded into the  _Preprocessing_EEG.m_ function. The resulting clean files are then saved in their corresponding folder. The remainder of the preprocessing pipeline is described below:
+- **Step 4**: Running _IC_MARBLE.m_
+Filtered data are loaded into the  _IC_MARBLE.m_ function. The resulting clean files are then saved in their corresponding folder. The remainder of the preprocessing pipeline is described below:
 
-    - **Preprocessing_EEG.m**:
+    - **IC_MARBLE.m**:
         - 1) Loading filtered [.set] files
         - 2) Remove channel drift by Artifact Subspace Reconstruction [0.25-0.75 Hz]
         - 3) Specify the corrupted channels to exclude them from the ICA weights calculation
@@ -54,9 +54,9 @@ Filtered data are loaded into the  _Preprocessing_EEG.m_ function. The resulting
         - 10) Saving Clean [.set] Files
         - 11) Saving Percentages of Brain and Artifacts **after** IC Rejection
 
-        - **Input Data:** [brain_perc,brain_perc_clean]=Preprocessing_EEG(**path_filtered, path_clean_all**)
+        - **Input Data:** [brain_perc,brain_perc_clean]=IC_MARBLE(**path_filtered, path_clean_all**)
             + _path_filtered_: path to the folder/nested folders where filtered data is imported.
             + _path_clean_all_: path to the folder/nested folders where clean data will be exported.
-        - **Output Data:** [**brain_perc,brain_perc_clean**]=Preprocessing_EEG(path_filtered, path_clean_all)
+        - **Output Data:** [**brain_perc,brain_perc_clean**]=IC_MARBLE(path_filtered, path_clean_all)
             + _brain_perc_: neural data percentage **before** preprocessing [DOUBLE]
             + _brain_perc_clean_: neural data percentage **after** preprocessing [DOUBLE] 
