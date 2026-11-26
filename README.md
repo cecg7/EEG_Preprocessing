@@ -1,4 +1,4 @@
-# EEG_Preprocessing
+# EEG Pipeline Description
 
 This repository contains an EEG preprocessing pipeline consisting of two MATLAB functions developed using the EEGLAB plugin. The pipeline primarily uses ICLabel to identify and remove artifact-related independent components. Its main purpose is to quantify the percentage of neuronal activity retained in the EEG recordings before and after preprocessing, allowing assessment of artifact removal's effect on the resulting signals.
 
