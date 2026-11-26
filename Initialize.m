@@ -20,7 +20,7 @@ F3 = 'Insert Path 3 here';
 clean_folder = {F1, F2, F3};
 
 %% Filtering Function
-Filtering(raw_folder,filt_folder); 
+EEG_Filtering(raw_folder,filt_folder); 
 % Load raw data from raw_folder paths and save filtered data in filt_folder paths
 
 %% Preprocessing Pipeline
