@@ -1,4 +1,4 @@
-function Filtering(raw_folder,filt_folder)
+function EEG_Filtering(raw_folder,filt_folder)
 for states = 1:length(raw_folder)       % for loop to load raw files in each brach of nested folders
     path = raw_folder{states};          % raw file path of the brach "states"
     raw_files = dir([raw_folder{states} '\*.gdf']); % identifying raw files in the brach "states"
