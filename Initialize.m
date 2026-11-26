@@ -1,6 +1,6 @@
 %% 1) Start EEGLab
-addpath('C:\Program Files\MATLAB\R2020a\eeglab2024.2');
-addpath('C:\Users\52477\Desktop\UDEM\PEF\EEG');
+addpath('Insert EEGLab plugin path here');
+addpath('Insert main folder path here');
 eeglab()
 %% 2) Defining the working directories
 % Insert Nested Folders you need - Raw Data
